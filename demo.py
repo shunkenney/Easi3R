@@ -13,6 +13,7 @@ import functools
 import copy
 import cv2
 import shutil
+import wandb
 
 from dust3r.inference import inference
 from dust3r.model import AsymmetricCroCo3DStereo
@@ -469,6 +470,12 @@ def generate_visualization_video(result_path, base_output_dir="results/visualiza
 if __name__ == '__main__':
     parser = get_args_parser()
     args = parser.parse_args()
+    wb = wandb.init(
+        project="easi3r",
+        dir=f"{args.output_dir}/{args.seq_name}/wandb",
+        mode="online",
+        resume="allow",    # allow | must | false
+    )
 
     if args.output_dir is not None:
         tmp_path = args.output_dir

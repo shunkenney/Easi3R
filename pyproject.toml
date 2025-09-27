@@ -1,0 +1,54 @@
+[project]
+name = "easi3r-env"
+version = "0.1.0"
+description = "Easi3R の開発・実行用 Python 環境 (uv 管理)"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+
+# requirements.txt をそのまま TOML に移植 (重複は整理)
+dependencies = [
+    # conda で入れていた CMake を PyPI から入れる (バイナリ配布) ※ 3.31 相当
+    "cmake>=3.31",
+
+    "roma",
+    "gradio",
+    "matplotlib",
+    "tqdm",
+    "opencv-python",
+    "scipy",
+    "einops",
+    "gdown",
+    "trimesh",
+    "pyglet<2",
+    "huggingface-hub[torch]>=0.22",
+    "wandb",
+    "tensorboard",
+    "scikit-image",
+    "scikit-learn",
+    "prettytable",
+    "h5py",
+    "loguru",
+    "evo",
+    
+    # Ajust version as aligning with your machine.
+    # Detail is here: https://pytorch.org/get-started/previous-versions/
+    "torch==2.7.1+cu118; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "torchvision==0.22.1+cu118; sys_platform == 'linux' and platform_machine == 'x86_64'",
+
+    # local packages
+    "viser",
+    "sam-2",
+]
+
+
+[[tool.uv.index]]
+name = "torch-cuda"
+url = "https://download.pytorch.org/whl/cu118"  # Ajust version as aligning with your machine.
+explicit = true
+
+
+[tool.uv.sources]
+torch = { index = "torch-cuda", marker = "sys_platform == 'linux' and platform_machine == 'x86_64'"}
+torchvision = { index = "torch-cuda", marker = "sys_platform == 'linux' and platform_machine == 'x86_64'"}
+viser = { path = "viser", editable = true }
+sam-2 = { path = "third_party/sam2", editable = true }
