@@ -509,7 +509,7 @@ if __name__ == '__main__':
         recon_fun = functools.partial(get_reconstructed_scene, args, tmpdirname, model, args.device, args.silent, args.image_size)
         
         # Call the function with default parameters
-        scene, outfile, imgs = recon_fun(
+        output = recon_fun(
             filelist=input_files,
             schedule='linear',
             niter=300,

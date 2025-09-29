@@ -1,5 +1,5 @@
 [project]
-name = "easi3r-env"
+name = "easi3r"
 version = "0.1.0"
 description = "Easi3R の開発・実行用 Python 環境 (uv 管理)"
 readme = "README.md"

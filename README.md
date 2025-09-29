@@ -28,6 +28,12 @@ https://github.com/user-attachments/assets/80091ab5-2576-4b48-b880-a230376a6edf
 
 ## Getting Started
 
+## 変更点
+## Setup environment
+```bash
+bash setup.sh
+```
+
 ### Installation
 
 1. Clone Easi3R.
